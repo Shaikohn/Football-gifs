@@ -1,7 +1,7 @@
-const apiKey = 'VC1ty98hKfseABnhYSssoJp8r9GwmC3e';
-
-export default function getGifs({keyword = 'CR7'} = {}) {
-    const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${keyword}&limit=10&offset=0&rating=g&lang=en`;
+import {API_KEY, API_URL} from './settings'
+/* La multiplicacion en el offset hará que al avanzar de paginas muestre los siguientes 10 */
+export default function getGifs({keyword = 'CR7', limit = 10, page = 0} = {},) {
+    const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${page * limit}&rating=g&lang=en`;
 
     return (
         fetch(apiUrl)
